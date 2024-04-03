@@ -21,6 +21,17 @@ class SongList extends Component {
 
     return (
       <div>
+        <nav aria-label="breadcrumb">
+          <ul className="breadcrumb">
+            <li className="breadcrumb-item active">
+              <a href="/">Songs</a>
+            </li>
+            <li className="breadcrum-item">/</li>
+            <li className="breadcrum-item">
+              <a href="/#/songs/new">Create</a>
+            </li>
+          </ul>
+        </nav>
         <ul className="collection">{this.renderSongs()}</ul>
         <Link to="/songs/new" className="btn-floating btn-large red right">
           <i className="material-icons">add</i>

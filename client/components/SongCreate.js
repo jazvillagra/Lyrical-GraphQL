@@ -23,8 +23,19 @@ class SongCreate extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Back</Link>
-        <h3 className="title">Create a new song</h3>
+        <nav aria-label="breadcrumb">
+          <ul className="breadcrumb">
+            <li className="breadcrumb-item active">
+              <a href="/">Songs</a>
+            </li>
+            <li className="breadcrum-item">/</li>
+            <li className="breadcrum-item">
+              <a href="/#/songs/new">Create</a>
+            </li>
+          </ul>
+        </nav>
+        {/* <Link to="/">Back</Link> */}
+        <h3>Create a new song</h3>
         <form onSubmit={this.onSubmit.bind(this)}>
           <label>Song title:</label>
           <input
