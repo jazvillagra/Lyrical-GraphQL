@@ -1,0 +1,11 @@
+.collection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collection-item #delete-icon {
+    cursor: pointer;
+    color: tomato;
+    font-size: 18px;
+}
