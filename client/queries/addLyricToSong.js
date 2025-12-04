@@ -5,7 +5,9 @@ export default gql`
     addLyricToSong(songId: $songId, content: $content) {
       id
       lyrics {
+        id
         content
+        likes
       }
     }
   }

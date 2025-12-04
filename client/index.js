@@ -9,7 +9,12 @@ import SongList from "./components/songList";
 import SongCreate from "./components/SongCreate";
 import SongDetail from "./components/SongDetail";
 
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  //takes every piece of data that comes back from
+  //the graphQL server and puts it into a big
+  //normalized data store on the client
+  dataIdFromObject: o => o.id
+});
 
 const Root = () => {
   return (

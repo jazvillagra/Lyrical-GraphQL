@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import fetchSong from "../queries/fetchSong";
-import addLyricToSong from "../queries/addLyricToSong";
 import LyricCreate from "./LyricCreate";
 import LyricList from "./LyricList";
 
@@ -11,7 +10,8 @@ class SongDetail extends Component {
         console.log(this.props);
 
         const { song } = this.props.data;
-        if (!song) { return <div>Loading...</div>; }
+        if (!song) { return <div>Loading..</div>; }
+
         return (
             <div>
                 <nav aria-label="breadcrumb">
@@ -26,14 +26,6 @@ class SongDetail extends Component {
                     </ul>
                 </nav>
                 <h3>{song.title}</h3>
-                {/* <ul className="collection">
-                    {this.props.data.song.lyrics.map(({ id, content }) => (
-                        <li key={id} className="collection-item">
-                            {content}
-                        </li>
-                    ))}
-                </ul>
-                <br /> */}
                 <LyricList lyrics={song.lyrics} />
                 <LyricCreate songId={song.id} />
             </div>
