@@ -9,3 +9,7 @@
     color: tomato;
     font-size: 18px;
 }
+.collection-item #details-icon {
+    cursor: pointer;
+    font-size: 18px;
+}

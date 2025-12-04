@@ -12,12 +12,19 @@ class SongList extends Component {
     }).then(() => this.props.data.refetch());
   }
 
+  onSongDetails(id) {
+    this.props.router.push(`/songs/${id}`, { id });
+  }
+
   renderSongs() {
     return this.props.data.songs.map(({ id, title }) => {
       return (
         <li key={id} className="collection-item">
           {title}
-          <i className="material-icons" id="delete-icon" onClick={() => this.onSongDelete(id)}>delete</i>
+          <div>
+            <i className="material-icons" id="details-icon" onClick={() => this.onSongDetails(id)}>music_note</i>
+            <i className="material-icons" id="delete-icon" onClick={() => this.onSongDelete(id)}>delete</i>
+          </div>
         </li>
       );
     });
