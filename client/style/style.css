@@ -13,17 +13,20 @@
     cursor: pointer;
     font-size: 18px;
 }
+.collection-item .vote-box {
+    display: flex;
+    align-items: center;
+}
+.collection-item .vote-count {
+    margin: 0 10px;
+    font-weight: bold;
+}
 .collection-item #vote-icon {
     cursor: pointer;
     font-size: 18px;
 }
 
-.collection-item .vote-count {
-    margin: 0 10px;
-    font-weight: bold;
-}
-
-.collection-item .vote-box {
-    display: flex;
-    align-items: center;
+.collection-item #vote-icon:active {
+    color: green;
+    animation: anim 1s ease-in-out;
 }

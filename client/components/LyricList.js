@@ -1,6 +1,13 @@
 import React, { Component } from "react";
+import { graphql } from "react-apollo";
+import likeLyric from "../queries/likeLyric";
 
 class LyricList extends Component {
+    onLike(id) {
+        this.props.mutate({
+            variables: { id: id }
+        });
+    }
     renderLyrics() {
 
         return this.props.lyrics.map(({ id, content, likes }) => {
@@ -8,7 +15,7 @@ class LyricList extends Component {
                 <li key={id} className="collection-item">
                     {content}
                     <div className="vote-box">
-                        <i id="vote-icon" className="material-icons">thumb_up</i>
+                        <i id="vote-icon" className="material-icons" onClick={() => this.onLike(id)}>thumb_up</i>
                         <t className="vote-count">{likes}</t>
                     </div>
                 </li>
@@ -25,4 +32,4 @@ class LyricList extends Component {
     }
 }
 
-export default LyricList;
+export default graphql(likeLyric)(LyricList);
