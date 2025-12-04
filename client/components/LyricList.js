@@ -5,7 +5,15 @@ import likeLyric from "../queries/likeLyric";
 class LyricList extends Component {
     onLike(id) {
         this.props.mutate({
-            variables: { id: id }
+            variables: { id },
+            optimisticResponse: {
+                __typename: "Mutation",
+                likeLyric: {
+                    id,
+                    __typename: "LyricType",
+                    likes: this.props.lyrics.find(lyric => lyric.id === id).likes + 1
+                }
+            }
         });
     }
     renderLyrics() {
