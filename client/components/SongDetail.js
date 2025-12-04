@@ -25,7 +25,7 @@ class SongDetail extends Component {
                         </li>
                     </ul>
                 </nav>
-                <h3>{this.props.data.song.title}</h3>
+                <h3>{song.title}</h3>
                 {/* <ul className="collection">
                     {this.props.data.song.lyrics.map(({ id, content }) => (
                         <li key={id} className="collection-item">
@@ -34,8 +34,8 @@ class SongDetail extends Component {
                     ))}
                 </ul>
                 <br /> */}
-                {/* <LyricList /> */}
-                <LyricCreate songId={this.props.data.song.id} />
+                <LyricList lyrics={song.lyrics} />
+                <LyricCreate songId={song.id} />
             </div>
         );
     }
