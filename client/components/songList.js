@@ -2,17 +2,27 @@ import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import { Link } from "react-router";
 import query from "../queries/fetchSongs";
+import deleteSong from "../queries/deleteSong";
 
 class SongList extends Component {
+
+  onSongDelete(id) {
+    this.props.mutate({
+      variables: { id: id }
+    }).then(() => this.props.data.refetch());
+  }
+
   renderSongs() {
-    return this.props.data.songs.map((song) => {
+    return this.props.data.songs.map(({ id, title }) => {
       return (
-        <li key={song.id} className="collection-item">
-          {song.title}
+        <li key={id} className="collection-item">
+          {title}
+          <i className="material-icons" onClick={() => this.onSongDelete(id)}>delete</i>
         </li>
       );
     });
   }
+
   render() {
     //for async handling (temporary)
     if (this.props.data.loading) {
@@ -42,4 +52,6 @@ class SongList extends Component {
 }
 
 //first parenthesis content returns a function that is called by the second set of parenthesis
-export default graphql(query)(SongList);
+export default graphql(deleteSong)(
+  graphql(query)(SongList)
+);
